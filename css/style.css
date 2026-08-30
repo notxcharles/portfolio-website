@@ -269,6 +269,16 @@ img {
   }
 }
 
+@media (min-width: 881px) {
+  #education .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #certifications .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card {
   background: var(--color-bg-card);
   border-radius: 10px;
