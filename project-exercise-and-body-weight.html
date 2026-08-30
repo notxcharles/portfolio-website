@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project - Charles Harrison</title>
+  <meta name="description" content="Portfolio project: description" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon-180x180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a class="navbar__brand" href="index.html">Charles Harrison</a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li>
+          <a class="navbar__resume" data-cv-link href="#" target="_blank" rel="noopener">CV</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="section project-detail">
+      <div class="container">
+        <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+        <div class="card project-detail__card">
+          <h1>Exercise and Body Weight During Post-Chemotherapy Recovery: An N-of-1 Study</h1>
+          <p class="project-detail__summary">
+            Self-directed n-of-1 statistical study, built from 2.5 years of daily self-tracked data
+          </p>
+
+          <ul class="tag-list tag-list--topic">
+            <li>Applied Statistics</li>
+          </ul>
+          <ul class="tag-list tag-list--tech">
+            <li>Pandas</li>
+            <li>NumPy</li>
+            <li>SciPy</li>
+            <li>Matplotlib</li>
+          </ul>
+
+          <div class="project-detail__links">
+            <a class="btn btn--primary" href="https://github.com/notxcharles/Body-Composition-Analysis/tree/main"
+              target="_blank" rel="noopener">GitHub Repository</a>
+            <a class="btn btn--secondary"
+              href="https://drive.google.com/file/d/1nzGUoa89KGW9g11bSbzqgfhOcgbVVaq-/view?usp=sharing" target="_blank"
+              rel="noopener">Read the Report</a>
+          </div>
+
+          <h2>Overview</h2>
+          <p>
+            Over two and a half years of recovery from Stage 4 brain cancer and the chemotherapy-induced nerve damage
+            that came with it, I logged my body weight, exercise, and diet every day. This project turns that log into a
+            single-subject (n-of-1) statistical study asking a simple question: once calorific intake is controlled for,
+            does exercising actually change how much my weight moves day to day?
+          </p>
+          <h2>Building the Dataset</h2>
+          <p>
+            Daily body weight readings came from an Omron BF508 digital scale, exercise sessions were logged via Strava
+            (recorded on an Apple Watch Series 5 or Garmin Vívoactive 6), and diet was tracked in MyFitnessPal. I merged
+            the three sources by date, labelled each day as an exercise or non-exercise day (discarding sessions that
+            burned under 150 calories as estimated by Strava), and restricted the dataset to days with ≤100g of
+            carbohydrate intake to hold diet composition roughly constant.
+
+            After removing incomplete rows and outliers in daily weight change, I still had an imbalance in calorific
+            intake between the two groups. To fix that, I stratified days into 10-calorie bins and drew matched samples
+            from each bin. This left 41 observations per group for exercise and non-exercise days.
+          </p>
+          <h2>Testing for Difference</h2>
+          <p>
+            A Shapiro-Wilk test showed the exercise group's daily weight changes were normally distributed while the
+            non-exercise group's weren't, so I used the Mann-Whitney U test as the primary comparison rather than a
+            t-test. It returned U = 874.5, p = 0.756, failing to reject the null hypothesis that exercise has no effect
+            on daily weight change.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

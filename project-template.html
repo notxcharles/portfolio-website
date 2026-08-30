@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project - Charles Harrison</title>
+  <meta name="description" content="Portfolio project: description" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon-180x180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a class="navbar__brand" href="index.html">Charles Harrison</a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li>
+          <a class="navbar__resume" data-cv-link href="#" target="_blank" rel="noopener">CV</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="section project-detail">
+      <div class="container">
+        <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+        <div class="card project-detail__card">
+          <h1>Project Title</h1>
+          <p class="project-detail__summary">
+            Project summary
+          </p>
+
+          <ul class="tag-list tag-list--topic">
+            <li>Topic tags</li>
+          </ul>
+          <ul class="tag-list tag-list--tech">
+            <li>Tech tags</li>
+          </ul>
+
+          <div class="project-detail__links">
+            <a class="btn btn--primary" href="" target="_blank" rel="noopener">GitHub Repository</a>
+            <a class="btn btn--secondary" href="" target="_blank" rel="noopener">Read the Report</a>
+          </div>
+
+          <h2>Overview</h2>
+          <p>
+            Project overview
+          </p>
+          <h2>Part 1</h2>
+          <p>
+            ...
+          </p>
+          <h2>Part 2</h2>
+          <p>
+            ...
+          </p>
+          <h2>Takeaways</h2>
+          <p>
+            ...
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

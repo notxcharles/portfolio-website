@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PubMedQA Challenge - Charles Harrison</title>
+  <meta name="description"
+    content="Portfolio project: An analysis of word embeddings and prompting techniques on PubMedQA" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon-180x180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a class="navbar__brand" href="index.html">Charles Harrison</a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li>
+          <a class="navbar__resume" data-cv-link href="#" target="_blank" rel="noopener">CV</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="section project-detail">
+      <div class="container">
+        <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+        <div class="card project-detail__card">
+          <h1>An Analysis of Word Embeddings and Prompting Techniques on PubMedQA</h1>
+          <p class="project-detail__summary">
+            University of Lincoln NLP Assignment (Scored 87%)
+          </p>
+
+          <ul class="tag-list tag-list--topic">
+            <li>Natural Language Processing</li>
+          </ul>
+          <ul class="tag-list tag-list--tech">
+            <li>PyTorch</li>
+            <li>Scikit-learn</li>
+            <li>HuggingFace</li>
+            <li>GloVe</li>
+            <li>Word2Vec</li>
+            <li>Llama3.2</li>
+          </ul>
+
+          <div class="project-detail__links">
+            <a class="btn btn--primary"
+              href="https://github.com/notxcharles/CMP2028-Natural-Language-Processing-A01/tree/main" target="_blank"
+              rel="noopener">GitHub Repository</a>
+            <a class="btn btn--secondary"
+              href="https://github.com/notxcharles/CMP2028-Natural-Language-Processing-A01/blob/main/report/main.pdf"
+              target="_blank" rel="noopener">Read the Report</a>
+          </div>
+
+          <h2>Overview</h2>
+          <p>
+            For my Natural Language Processing module at the University of Lincoln, one of my assignments was centered
+            around PubMedQA,
+            a dataset comprising of medical research questions from PubMed abstracts. The task was given a question and
+            the abstract it
+            comes from, predict two things: a short answer (yes, or no) and a longer, detailed explanation justifying
+            the answer.<br><br>
+
+            The assignment was split into two experiments. The first experiment looks at the short-answer tasks and
+            analyses which matters more:
+            the type of embedding model (static or contextual), or what data the model was pre-trained on. The second
+            looks at how much prompt engineering
+            can affect an LLM's ability to generate an explanation.
+          </p>
+          <h2>Experiment 1: static versus contextual embeddings</h2>
+          <p>
+            I trained a logistic regression classifier on top of embeddings from four models, and a stratified random
+            chance baseline. The four models were split across two axes: embedding type and pre-training domain.<br>
+            • glove-wiki-gigaword-300, static, general-purpose, pre-trained on Wikipedia<br>
+            • pubmed2018-w2v-400D, static, pre-trained on 27 million PubMed abstracts<br>
+            • all-MiniLM-L6-v2, contextual, general-purpose, pre-trained on over a billion sentences<br>
+            • pubmedbert-base-embeddings, contextual, pre-trained on PubMed title-abstract pairs<br><br>
+
+            My hypothesis was that pubmedbert-base-embeddings would perform best, because it combines context aware
+            embeddings with pre-training on medical domain knowledge.<br><br>
+            Domain pre-training produced a much bigger improvement than switching from static to contextual embeddings.
+            Moving pre-training materials from general to medical
+            data improved weighted F1 by 12.0% for the static models and 7.3% for the contextual ones, whereas moving
+            from static to contextual within the same domain improved
+            weighted F1 by 4.9% for the general models and only 0.22% for the medical ones. Static embeddings gained
+            more from domain pre-training than contextual embeddings did,
+            which is the opposite of what I expected going in.
+          </p>
+          <h2>Experiment 2: prompting strategies for the long answer</h2>
+          <p>
+            The second experiment used an LLM (Llama-3.2-1B-Instruct fine-tuned on medical QA) to generate the long
+            answer and compared how much prompt engineering
+            changed the output quality. I tested five prompting techniques, each with and without repetition, giving ten
+            prompts in total: zero-shot, one-shot,
+            class-few-shot (one example per answer class), chain-of-thought, and role prompting. Outputs were scored
+            with BERTScore, which compares meaning rather than exact wording, since two
+            correct answers can be phrased completely differently.<br><br>
+
+            My hypothesis was that prompts with more context would score higher, so class-few-shot ahead of one-shot
+            ahead of zero-shot.<br><br>
+
+            Class-few-shot came out on top with a BERTscore of 0.8194, but only just. Zero-shot and chain-of-thought
+            both scored 0.8172, suggesting that prompt structure
+            has far less influence on this task than the choice of model.
+
+          </p>
+          <h2>Takeaways</h2>
+          <p>
+            As made clear in both of the experiments: the material that a model is trained on mattered more than the
+            architecture that it was built on. A static embedding model
+            trained on the right data outperformed a contextual model trained on the wrong data.<br><br>
+
+            This generalises beyond NLP. Whatever the model its ceiling is set by how well the data it learned
+            from represents the problem you want it to solve.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

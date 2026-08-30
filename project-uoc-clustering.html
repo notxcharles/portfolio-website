@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Segmentation with Clustering - Charles Harrison</title>
+  <meta name="description" content="Portfolio project: Customer Segmentation with Clustering" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon-180x180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a class="navbar__brand" href="index.html">Charles Harrison</a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li>
+          <a class="navbar__resume" data-cv-link href="#" target="_blank" rel="noopener">CV</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="section project-detail">
+      <div class="container">
+        <a class="back-link" href="index.html#projects">← Back to projects</a>
+
+        <div class="card project-detail__card">
+          <h1>Customer Segmentation with Clustering</h1>
+          <p class="project-detail__summary">
+            University of Cambridge PACE - Data Science Career Accelerator Mini-Project
+          </p>
+
+          <ul class="tag-list tag-list--topic">
+            <li>Unsupervised Learning</li>
+          </ul>
+          <ul class="tag-list tag-list--tech">
+            <li>K-Means</li>
+            <li>Scikit-learn</li>
+            <li>PCA</li>
+            <li>t-SNE</li>
+          </ul>
+
+          <div class="project-detail__links">
+            <a class="btn btn--secondary"
+              href="https://drive.google.com/file/d/1bLZYG3FOInj5hKihNfWLebnNYqWKdJr_/view?usp=sharing" target="_blank"
+              rel="noopener">Read the Report</a>
+          </div>
+
+          <h2>Overview</h2>
+          <p>
+            In this project I worked with a transactional dataset that contained almost one million shopping orders
+            placed between 2012 and
+            2017, and aggregated it to ~66,000 individual customers.<br><br>
+
+            The brief was to segment those customers down using unsupervised learning so that the business could target
+            the groups with different
+            marketing strategies.
+          </p>
+          <h2>Cleaning The Dataset</h2>
+          <p>
+            The raw dataset needed cleaning before it was usable for further analysis. Currency strings needed to be
+            parsed into floats, customer age
+            and order recency had to be derived from birthdate and order dates.
+            <br><br>
+            After aggregating by customer, five features were kept: number of orders placed, recency, customer lifetime
+            value (CLV), average unit cost, and
+            age.
+          </p>
+          <h2>Finding Anomalies Before Clustering</h2>
+          <p>
+            Before clustering, I compared three anomaly detection methods: interquartile range
+            (IQR), one-class SVM, and isolation forest. IQR flagged a customer as anomalous once two or more
+            of their features fell outside the normal range, which caught 2.9% of customers, so I matched
+            that same contamination rate for the other two methods.
+            <br><br>
+            To pick between them, I measured Jaccard similarity between each pair of methods rather than
+            trusting any one in isolation. Isolation forest had the strongest overall agreement with the
+            other two, so I used it to remove outliers ahead of clustering. A PCA projection of the flagged
+            points showed a reasonable separation, with the two components explaining 65% of total variance between
+            them.
+          </p>
+          <h2>Choosing K and Running K-means</h2>
+          <p>
+            Instead of choosing the number of clusters by eye, I checked against four methods: the elbow method,
+            silhouette score, the Davies-Bouldin index, and hierarchical clustering. All methods suggested k=2, except
+            the Davies-Bouldin index which ranked k=5 the highest, followed by k=2.
+            <br><br>
+            Customers were segmented into two groups, primarily split on engagement. Cluster 0 represents customers that
+            have placed a small amount of orders (median=6), have low CLV (median=£954.70), and have older recency
+            (median=3847).
+            On the other hand, cluster 1 represents a high value group of customers: a median of 18 orders, more recent
+            activity, and a median CLV of £3,400.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
