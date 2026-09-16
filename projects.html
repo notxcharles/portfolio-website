@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Charles Harrison</title>
+  <meta name="description"
+    content="Every project in Charles Harrison's portfolio, filterable by topic and technology." />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon-180x180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a class="navbar__brand" href="index.html">Charles Harrison</a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#certifications">Certifications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li>
+          <a class="navbar__resume" data-cv-link href="#" target="_blank" rel="noopener">CV</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="section" id="all-projects">
+      <div class="container">
+        <a class="back-link" href="index.html">← Back to home</a>
+
+        <h1 class="section__title">All Projects</h1>
+        <p class="section__subtitle">
+          Everything I've built, from university coursework to things I made because I wanted to see if they'd work.
+          Use the filters to narrow the list down by topic or by the tools involved.
+        </p>
+
+        <!-- Filters -->
+        <section class="filters" id="projectFilters" aria-label="Filter projects">
+          <div class="filters__group">
+            <h2 class="filters__legend" id="topicFilterLabel">Topic</h2>
+            <ul class="filters__chips" id="topicFilters" aria-labelledby="topicFilterLabel"></ul>
+          </div>
+
+          <div class="filters__group">
+            <h2 class="filters__legend" id="techFilterLabel">Technology</h2>
+            <ul class="filters__chips" id="techFilters" aria-labelledby="techFilterLabel"></ul>
+          </div>
+
+          <div class="filters__bar">
+            <p class="filters__status" id="filterStatus" role="status" aria-live="polite"></p>
+            <button class="btn btn--secondary btn--sm filters__clear" id="filterClear" type="button" hidden>
+              Clear filters
+            </button>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <div class="card-grid" id="projectGrid">
+          <article class="card project-card">
+            <h3>Playing Minesweeper with Computer Vision</h3>
+            <p>
+              A bot that plays Clean Minesweeper from screenshots alone - no APIs and no save files - with an overlay
+              that explains the reasoning behind every move it makes.
+            </p>
+            <ul class="tag-list tag-list--topic">
+              <li>Computer Vision</li>
+              <li>Explainable AI</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li>
+              <li>OpenCV</li>
+              <li>Tesseract OCR</li>
+              <li>PyAutoGUI</li>
+              <li>Tkinter</li>
+            </ul>
+            <a class="btn btn--secondary btn--sm project-card__details"
+              href="project-computer-vision-minesweeper.html">View details</a>
+          </article>
+
+          <article class="card project-card">
+            <h3>X Engagement Dashboard</h3>
+            <p>
+              A role-based dashboard built with Flask using a MySQL database that lets a manager see how their social
+              media team is performing and how that impacts the account.
+            </p>
+            <ul class="tag-list tag-list--topic">
+              <li>Team Analytics</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li>
+              <li>Flask</li>
+              <li>MySQL</li>
+              <li>Chart.js</li>
+              <li>Docker</li>
+              <li>Caddy</li>
+              <li>Tampermonkey</li>
+            </ul>
+            <a class="btn btn--secondary btn--sm project-card__details" href="project-engagement-dashboard.html">View
+              details</a>
+          </article>
+
+          <article class="card project-card">
+            <h3>An Analysis of Word Embeddings and Prompting Techniques on PubMedQA</h3>
+            <p>
+              Conducted experiments that investigated the ability for a model to accurately classify a medical research
+              question with yes or no answers.
+            </p>
+            <ul class="tag-list tag-list--topic">
+              <li>Natural Language Processing</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li>
+              <li>PyTorch</li>
+              <li>Scikit-learn</li>
+              <li>HuggingFace</li>
+              <li>GloVe</li>
+              <li>Word2Vec</li>
+              <li>Llama 3.2</li>
+            </ul>
+            <a class="btn btn--secondary btn--sm project-card__details" href="project-pubmedqa.html">View details</a>
+          </article>
+
+          <article class="card project-card">
+            <h3>Exercise and Body Weight During Post-Chemotherapy Recovery: An N-of-1 Study</h3>
+            <p>
+              Self-directed n-of-1 statistical study, built from 2.5 years of daily self-tracked data.
+            </p>
+            <ul class="tag-list tag-list--topic">
+              <li>Applied Statistics</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li>
+              <li>Pandas</li>
+              <li>NumPy</li>
+              <li>SciPy</li>
+              <li>Matplotlib</li>
+            </ul>
+            <a class="btn btn--secondary btn--sm project-card__details"
+              href="project-exercise-and-body-weight.html">View details</a>
+          </article>
+
+          <article class="card project-card">
+            <h3>Customer Segmentation with Clustering</h3>
+            <p>
+              Segmented ~66,000 customers from a dataset containing a million transactions into distinct groups using
+              K-Means, allowing for targeted marketing.
+            </p>
+            <ul class="tag-list tag-list--topic">
+              <li>Unsupervised Learning</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li>
+              <li>Scikit-learn</li>
+              <li>K-Means</li>
+              <li>PCA</li>
+              <li>t-SNE</li>
+            </ul>
+            <a class="btn btn--secondary btn--sm project-card__details" href="project-uoc-clustering.html">View
+              details</a>
+          </article>
+        </div>
+
+        <p class="projects-empty" id="projectsEmpty" hidden>
+          No projects match those filters yet.
+        </p>
+      </div>
+    </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
