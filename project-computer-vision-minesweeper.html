@@ -3145,16 +3145,18 @@
 
           <h2>Reading the Board</h2>
           <p>
-            Each game starts by working out which window contains the game, resizes it, and places it in the top left of
-            the screen. Every turn starts by taking a screenshot (using <code>mss</code>). <code>OpenCV</code>'s
-            template matching is then used to find every tile on the grid. The matches are compared against known board
-            sizes (9x9, 16x16, and 16x30) to ensure that the correct amount of tiles have been located.
-
-            From then on, every turn, each tile is classified by testing it against templates for every possible state:
-            unrevealed (base state), blank (confirmed safe), flagged (mine), or numbered from one to eight. Whichever
-            template scores highest wins, however if the tile doesn't score above a confidence threshold, it is marked
-            as unknown so the solver knowns to treat it with care. A region of the screen is read with
-            <code>pytesseract</code> to track remaining mine count, which is used in probability calculations.
+            When the bot starts, it finds which window contains the game, resizes it, and places it
+            in the top left of the screen. It takes a screenshot (using <code>mss</code>) and then
+            <code>OpenCV</code>'s template matching is used to find the pixel coordinates for every tile on the grid.
+            The matches are compared against known board sizes (9x9, 16x16, and 30x16) to ensure that the correct amount
+            of tiles have been located.
+            <br><br>
+            From then on, every turn starts with a new screenshot being taken, and each tile is classified by testing it
+            against templates for every possible state: unrevealed (base state), blank (confirmed safe), flagged (mine),
+            or numbered from one to eight. Whichever template scores highest wins, however if the tile doesn't score
+            above a confidence threshold, it is marked as unknown so the solver knows to treat it with care. A region of
+            the screen is read with <code>pytesseract</code> to track remaining mine count, which is used in probability
+            calculations.
           </p>
           <h2>Finding Mines: Deterministically</h2>
           <p>
