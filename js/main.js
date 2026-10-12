@@ -1,5 +1,5 @@
 // Site-wide config and behavior.
-const CV_URL = "https://drive.google.com/file/d/1Thsviw3e6w6WsHcxqbC3s5vEciWX87Up/view?usp=sharing";
+const CV_URL = "https://drive.google.com/file/d/1h-JJ0VoDHtXEijP8QdnHtdC6GwxCfpbj/view";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-cv-link]").forEach((el) => {
